@@ -18,3 +18,4 @@ b(end+1,end+1) = 0;
 pcolor(0.5:size(M,2) + 0.5, 0.5:size(M,1) + 0.5, b); % 赋予栅格颜色
 set(gca, 'XTick', 1:size(M,1), 'YTick', 1:size(M,2));  % 设置坐标
 axis image xy;  % 沿每个坐标轴使用相同的数据单位，保持一致
+hold on;

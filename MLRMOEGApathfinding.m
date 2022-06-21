@@ -1,4 +1,4 @@
-function [finaldata]=MLRMOEGApathfinding(maprisk,mapdata,mapspeed,mapmatrix,mapG,start,goal,n,gatime,gasmooth,gacost,garisk,runtimes,initial_population_size,itertaion_limit)
+function [finaldata,min_path]=MLRMOEGApathfinding(maprisk,mapdata,mapspeed,mapmatrix,mapG,start,goal,n,gatime,gasmooth,gacost,garisk,runtimes,initial_population_size,itertaion_limit)
 % 基于遗传算法的栅格法机器人路径规划
 % 输入数据,即栅格地图
 G=mapG;
@@ -129,16 +129,17 @@ for i = 1 : max_gen
     [path_cost,cost] = cal_path_cost(new_pop1, x, MAPdata);
     %计算路径摔倒率
     [path_risk,risk] = cal_path_risk(new_pop1, x, MAPrisk);
-    %四个优化目标组成矩阵
-    database=[path_time;
-              path_smooth;
-              path_cost;
-              path_risk]  %计算过程数据，可能经过归一化等处理
     
-    realdatabase=[time;
-                  totalangle;
-                  cost;
-                  risk]     %真实数据
+    %四个优化目标组成矩阵
+    database=[path_cost;
+              path_time;
+              path_risk;
+              path_smooth]  %计算过程数据，可能经过归一化等处理
+    
+    realdatabase=[cost;
+                  time;
+                  risk;
+                  totalangle]%真实数据
 
     i
     
@@ -266,15 +267,15 @@ for i = 1 : max_gen
     %计算路径摔倒率
     [path_risk,risk] = cal_path_risk(new_pop2, x, MAPrisk);
     %四个优化目标组成矩阵
-    database=[path_time;
-              path_smooth;
-              path_cost;
-              path_risk]  %计算过程数据，可能经过归一化等处理
+    database=[path_cost;
+              path_time;
+              path_risk;
+              path_smooth]  %计算过程数据，可能经过归一化等处理
     
-    realdatabase=[time;
-                  totalangle;
-                  cost;
-                  risk]     %真实数据
+    realdatabase=[cost;
+                  time;
+                  risk;
+                  totalangle]%真实数据
     
     if gatime==1
         fit_value =time .^ -1 ;

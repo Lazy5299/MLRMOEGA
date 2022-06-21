@@ -1,5 +1,8 @@
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          function varargout = PathFinding(varargin)
 %      用户界面
+% %       Built by Chong Liu & Aizun Liu
+% %       Northeastern University,Shenyang,China
+% %       2000371@stu.neu.edu.cn
 %      PATHFINDING MATLAB code for PathFinding.fig
 %      PATHFINDING, by itself, creates a new PATHFINDING or raises the existing
 %      singleton*.
@@ -19,12 +22,12 @@
 %
 %      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
 %      instance to run (singleton)".
-%
+
 % See also: GUIDE, GUIDATA, GUIHANDLES
 
 % Edit the above text to modify the response to help PathFinding
 
-% Last Modified by GUIDE v2.5 12-Dec-2021 16:45:01
+% Last Modified by GUIDE v2.5 07-Jun-2022 08:37:33
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -207,91 +210,91 @@ if startflag
             mapG(coordinates(2),coordinates(1)) = 0 ;
         case 2     %高墙
             if mapmatrix(coordinates(2),coordinates(1)) ~=4  &&  mapmatrix(coordinates(2),coordinates(1)) ~=2
-            mapmatrix(coordinates(2),coordinates(1)) =4; %黑色
-            mapdata(coordinates(2),coordinates(1)) = inf;
-            mapfar (coordinates(2),coordinates(1)) = inf;
-            maprisk(coordinates(2),coordinates(1)) = inf;
-            mapspeed(coordinates(2),coordinates(1)) = inf;
-            maze(coordinates(2),coordinates(1)) = 1 ;
-            mapz(coordinates(2),coordinates(1)) = inf;
-            mapG(coordinates(2),coordinates(1)) = 1 ;
-            if coordinates(2)-1 > 0 
-                maprisk(coordinates(2)-1,coordinates(1)) = maprisk(coordinates(2)-1,coordinates(1))+(0.05*shangebianchang);
-            end
-            if coordinates(2)+1 < n  
-                maprisk(coordinates(2)+1,coordinates(1)) = maprisk(coordinates(2)+1,coordinates(1))+(0.05*shangebianchang) ;
-            end
-            if coordinates(1)-1 > 0 
-                maprisk(coordinates(2),coordinates(1)-1) = maprisk(coordinates(2),coordinates(1)-1)+(0.05*shangebianchang);
-            end
-            if coordinates(1)+1 < n 
-                maprisk(coordinates(2),coordinates(1)+1) = maprisk(coordinates(2),coordinates(1)+1)+(0.05*shangebianchang);
-            end
-            if coordinates(2)+1 < n &&  coordinates(1)-1 > 0 
-                maprisk(coordinates(2)+1,coordinates(1)-1) = maprisk(coordinates(2)+1,coordinates(1)-1)+ (0.03*shangebianchang) ;
-            end
-            if coordinates(2)-1 > 0 &&  coordinates(1)+1 < n
-                maprisk(coordinates(2)-1,coordinates(1)+1) = maprisk(coordinates(2)-1,coordinates(1)+1)+ (0.03*shangebianchang);
-            end
-            if coordinates(2)+1 < n &&  coordinates(1)+1 < n 
-                maprisk(coordinates(2)+1,coordinates(1)+1) = maprisk(coordinates(2)+1,coordinates(1)+1)+ (0.03*shangebianchang) ;
-            end
-            if coordinates(2)-1 > 0 &&  coordinates(1)-1 > 0 
-                maprisk(coordinates(2)-1,coordinates(1)-1) = maprisk(coordinates(2)-1,coordinates(1)-1)+ (0.03*shangebianchang);
-            end
-            else
-            mapmatrix(coordinates(2),coordinates(1)) =4; %黑色
-            mapdata(coordinates(2),coordinates(1)) = inf;
-            mapfar (coordinates(2),coordinates(1)) = inf;
-            maprisk(coordinates(2),coordinates(1)) = inf;
-            mapspeed(coordinates(2),coordinates(1)) = inf;
-            maze(coordinates(2),coordinates(1)) = 1 ;
-            mapz(coordinates(2),coordinates(1)) = inf;
-            mapG(coordinates(2),coordinates(1)) = 1 ; 
+                mapmatrix(coordinates(2),coordinates(1)) =4; %黑色
+                mapdata(coordinates(2),coordinates(1)) = inf;
+                mapfar (coordinates(2),coordinates(1)) = inf;
+                maprisk(coordinates(2),coordinates(1)) = inf;
+                mapspeed(coordinates(2),coordinates(1)) = inf;
+                maze(coordinates(2),coordinates(1)) = 1 ;
+                mapz(coordinates(2),coordinates(1)) = inf;
+                mapG(coordinates(2),coordinates(1)) = 1 ;
+                if coordinates(2)-1 > 0 
+                    maprisk(coordinates(2)-1,coordinates(1)) = maprisk(coordinates(2)-1,coordinates(1))+(0.05*shangebianchang);
+                end
+                if coordinates(2)+1 < n  
+                    maprisk(coordinates(2)+1,coordinates(1)) = maprisk(coordinates(2)+1,coordinates(1))+(0.05*shangebianchang) ;
+                end
+                if coordinates(1)-1 > 0 
+                    maprisk(coordinates(2),coordinates(1)-1) = maprisk(coordinates(2),coordinates(1)-1)+(0.05*shangebianchang);
+                end
+                if coordinates(1)+1 < n 
+                    maprisk(coordinates(2),coordinates(1)+1) = maprisk(coordinates(2),coordinates(1)+1)+(0.05*shangebianchang);
+                end
+                if coordinates(2)+1 < n &&  coordinates(1)-1 > 0 
+                    maprisk(coordinates(2)+1,coordinates(1)-1) = maprisk(coordinates(2)+1,coordinates(1)-1)+ (0.03*shangebianchang) ;
+                end
+                if coordinates(2)-1 > 0 &&  coordinates(1)+1 < n
+                    maprisk(coordinates(2)-1,coordinates(1)+1) = maprisk(coordinates(2)-1,coordinates(1)+1)+ (0.03*shangebianchang);
+                end
+                if coordinates(2)+1 < n &&  coordinates(1)+1 < n 
+                    maprisk(coordinates(2)+1,coordinates(1)+1) = maprisk(coordinates(2)+1,coordinates(1)+1)+ (0.03*shangebianchang) ;
+                end
+                if coordinates(2)-1 > 0 &&  coordinates(1)-1 > 0 
+                    maprisk(coordinates(2)-1,coordinates(1)-1) = maprisk(coordinates(2)-1,coordinates(1)-1)+ (0.03*shangebianchang);
+                end
+                else
+                mapmatrix(coordinates(2),coordinates(1)) =4; %黑色
+                mapdata(coordinates(2),coordinates(1)) = inf;
+                mapfar (coordinates(2),coordinates(1)) = inf;
+                maprisk(coordinates(2),coordinates(1)) = inf;
+                mapspeed(coordinates(2),coordinates(1)) = inf;
+                maze(coordinates(2),coordinates(1)) = 1 ;
+                mapz(coordinates(2),coordinates(1)) = inf;
+                mapG(coordinates(2),coordinates(1)) = 1 ; 
             end
         case 3     %河
             if mapmatrix(coordinates(2),coordinates(1)) ~=4  &&  mapmatrix(coordinates(2),coordinates(1)) ~=2
-            mapmatrix(coordinates(2),coordinates(1)) =2; %蓝色
-            mapdata(coordinates(2),coordinates(1)) = inf;
-            mapfar (coordinates(2),coordinates(1)) = inf;
-            maprisk(coordinates(2),coordinates(1)) = inf;
-            mapspeed(coordinates(2),coordinates(1)) = inf;
-            maze(coordinates(2),coordinates(1)) = 1 ;
-            mapz(coordinates(2),coordinates(1)) = inf;
-            mapG(coordinates(2),coordinates(1)) = 1 ;
-            if coordinates(2)-1 > 0 
-                maprisk(coordinates(2)-1,coordinates(1)) = maprisk(coordinates(2)-1,coordinates(1))+(0.05*shangebianchang);
-            end
-            if coordinates(2)+1 < n  
-                maprisk(coordinates(2)+1,coordinates(1)) = maprisk(coordinates(2)+1,coordinates(1))+(0.05*shangebianchang) ;
-            end
-            if coordinates(1)-1 > 0 
-                maprisk(coordinates(2),coordinates(1)-1) = maprisk(coordinates(2),coordinates(1)-1)+(0.05*shangebianchang);
-            end
-            if coordinates(1)+1 < n 
-                maprisk(coordinates(2),coordinates(1)+1) = maprisk(coordinates(2),coordinates(1)+1)+(0.05*shangebianchang);
-            end
-            if coordinates(2)+1 < n &&  coordinates(1)-1 > 0 
-                maprisk(coordinates(2)+1,coordinates(1)-1) = maprisk(coordinates(2)+1,coordinates(1)-1)+ (0.03*shangebianchang) ;
-            end
-            if coordinates(2)-1 > 0 &&  coordinates(1)+1 < n
-                maprisk(coordinates(2)-1,coordinates(1)+1) = maprisk(coordinates(2)-1,coordinates(1)+1)+ (0.03*shangebianchang);
-            end
-            if coordinates(2)+1 < n &&  coordinates(1)+1 < n 
-                maprisk(coordinates(2)+1,coordinates(1)+1) = maprisk(coordinates(2)+1,coordinates(1)+1)+ (0.03*shangebianchang) ;
-            end
-            if coordinates(2)-1 > 0 &&  coordinates(1)-1 > 0 
-                maprisk(coordinates(2)-1,coordinates(1)-1) = maprisk(coordinates(2)-1,coordinates(1)-1)+ (0.03*shangebianchang);
-            end
-            else
-            mapmatrix(coordinates(2),coordinates(1)) =2; %蓝色
-            mapdata(coordinates(2),coordinates(1)) = inf;
-            mapfar (coordinates(2),coordinates(1)) = inf;
-            maprisk(coordinates(2),coordinates(1)) = inf;
-            mapspeed(coordinates(2),coordinates(1)) = inf;
-            maze(coordinates(2),coordinates(1)) = 1 ;
-            mapz(coordinates(2),coordinates(1)) = inf;
-            mapG(coordinates(2),coordinates(1)) = 1 ;   
+                mapmatrix(coordinates(2),coordinates(1)) =2; %蓝色
+                mapdata(coordinates(2),coordinates(1)) = inf;
+                mapfar (coordinates(2),coordinates(1)) = inf;
+                maprisk(coordinates(2),coordinates(1)) = inf;
+                mapspeed(coordinates(2),coordinates(1)) = inf;
+                maze(coordinates(2),coordinates(1)) = 1 ;
+                mapz(coordinates(2),coordinates(1)) = inf;
+                mapG(coordinates(2),coordinates(1)) = 1 ;
+                if coordinates(2)-1 > 0 
+                    maprisk(coordinates(2)-1,coordinates(1)) = maprisk(coordinates(2)-1,coordinates(1))+(0.05*shangebianchang);
+                end
+                if coordinates(2)+1 < n  
+                    maprisk(coordinates(2)+1,coordinates(1)) = maprisk(coordinates(2)+1,coordinates(1))+(0.05*shangebianchang) ;
+                end
+                if coordinates(1)-1 > 0 
+                    maprisk(coordinates(2),coordinates(1)-1) = maprisk(coordinates(2),coordinates(1)-1)+(0.05*shangebianchang);
+                end
+                if coordinates(1)+1 < n 
+                    maprisk(coordinates(2),coordinates(1)+1) = maprisk(coordinates(2),coordinates(1)+1)+(0.05*shangebianchang);
+                end
+                if coordinates(2)+1 < n &&  coordinates(1)-1 > 0 
+                    maprisk(coordinates(2)+1,coordinates(1)-1) = maprisk(coordinates(2)+1,coordinates(1)-1)+ (0.03*shangebianchang) ;
+                end
+                if coordinates(2)-1 > 0 &&  coordinates(1)+1 < n
+                    maprisk(coordinates(2)-1,coordinates(1)+1) = maprisk(coordinates(2)-1,coordinates(1)+1)+ (0.03*shangebianchang);
+                end
+                if coordinates(2)+1 < n &&  coordinates(1)+1 < n 
+                    maprisk(coordinates(2)+1,coordinates(1)+1) = maprisk(coordinates(2)+1,coordinates(1)+1)+ (0.03*shangebianchang) ;
+                end
+                if coordinates(2)-1 > 0 &&  coordinates(1)-1 > 0 
+                    maprisk(coordinates(2)-1,coordinates(1)-1) = maprisk(coordinates(2)-1,coordinates(1)-1)+ (0.03*shangebianchang);
+                end
+                else
+                mapmatrix(coordinates(2),coordinates(1)) =2; %蓝色
+                mapdata(coordinates(2),coordinates(1)) = inf;
+                mapfar (coordinates(2),coordinates(1)) = inf;
+                maprisk(coordinates(2),coordinates(1)) = inf;
+                mapspeed(coordinates(2),coordinates(1)) = inf;
+                maze(coordinates(2),coordinates(1)) = 1 ;
+                mapz(coordinates(2),coordinates(1)) = inf;
+                mapG(coordinates(2),coordinates(1)) = 1 ;   
             end
         case 4     %斜面
             mapmatrix(coordinates(2),coordinates(1)) = 3; %品红
@@ -593,624 +596,6 @@ set(handles.startpoint,'value',0);
 
 end
 
-%% 功耗
-
-% --- Executes on button press in pathfind. 最小功耗
-function pathfind_Callback(hObject, eventdata, handles)
-% hObject    handle to pathfind (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-%方格数及障碍物比例的设定
-tic
-global SandEpoint mapdata mapmatrix mapfar maprisk row column mapspeed mapz  
-n = str2double(get(handles.row,'string'));   % 产生一个n x n的方格，修改此值可以修改生成图片的方格数
-wallpercent = 0;  % 这个变量代表生成的障碍物占总方格数的比例 ，如0.5 表示障碍物占总格数的50%
-Environmental_Set=1; %这个参数用来选择是否随机生成障碍物，若设定为0，则使用上一次创建的环境信息，若设定为1，则重新随机生成障碍物
-Reset_GS=1;   %这个参数用来选择是否重新设定起始点和终止点，若设定为1，开始重新设定起始点和终止点，同时需要将变量New_goalposind和New_startposind的值修改为你所选择的起始点和终止点的索引值，设为0则关闭
-
-% New_startposind=(SandEpoint(1,1)-1)*n+SandEpoint(1,2);  
-% New_goalposind=(SandEpoint(2,1)-1)*n+SandEpoint(2,2);   
-sgpoint=find(mapmatrix==10);
-New_startposind=sgpoint(1);
-New_goalposind=sgpoint(2);
-
-[field, startposind, goalposind, costchart, fieldpointers] =initializeField(n,wallpercent); %以上的代码封装成一个函数取名为initializeField,输出量为field, startposind, goalposind, costchart, fieldpointers；随机生成包含障碍物，起始点，终止点等信息的矩阵
-
-
-% normalcost=str2double(get(handles.normalcost,'string'));
-% laddercost=str2double(get(handles.laddercost,'string'));
-% upladdercost=str2double(get(handles.upladdercost,'string'));
-% anglecost=str2double(get(handles.anglecost,'string'));
-% b=[normalcost laddercost anglecost upladdercost];
-% maxdata= max(b);
-
-mindata= min(min(mapdata));               
-loc1=find(mapdata==inf);
-data = mapdata;
-data(loc1)=mindata;                %先替换cost数据中的inf，以便归一化进行
-
-speed=mapspeed;
-
-minrisk=min(min(maprisk));              
-loc2=find(maprisk==inf);
-risk=maprisk;
-risk(loc2)=minrisk;                %先替换risk数据中的inf，以便归一化进行
-
-
-% shangebianchang=str2double(get(handles.lengthofperblock,'string'));
-% GYfar = mapfar / shangebianchang; 
-GYdata = mapminmax(data,0,1); %归一化处理    mapminmax的数学公式为y = (ymax-ymin)*(x-xmin)/(xmax-xmin) + ymin   ymin=0,ymax=1,所以y=(x-xmin)/(xmax-xmin)
-GYrisk = mapminmax(risk,0, 1); %归一化处理
-GYspeed = mapminmax(speed,0,1); %归一化处理
-GYdata(loc1)=inf;
-GYrisk(loc2)=inf;
-
-
-cw = str2double(get(handles.costweight,'string')); %权重
-fw = str2double(get(handles.farweight,'string'));  %权重
-rw = str2double(get(handles.riskweight,'string')); %权重
-
-if cw==1
-    field=mapdata;
-elseif fw==1
-    field=mapspeed;
-elseif rw==1
-    field=maprisk;
-else
-    field= (cw * GYdata)+(fw * GYspeed)+(rw *  GYrisk) ; 
-end
-% field= (cw * GYdata)+(fw *  GYspeed)+(rw *  GYrisk) ;
-% field= (cw * GYdata)+(fw *  GYspeed)+(rw *  maprisk) ;
-
-
-%重新设定起始点和终止点
-if(Reset_GS==1)
-[field, startposind, goalposind, costchart, fieldpointers] = Reset_G_S(field, startposind, goalposind, costchart, fieldpointers,New_startposind,New_goalposind);
-end
-% 路径规划中用到的一些矩阵的初始化
-setOpen = [startposind];  %setOpen 矩阵是用来存放待选的子节点（也就是拓展出来的子节点）的矩阵，初始化为起始点的索引值，在这个待选的矩阵里面找到最优的值，再存放到矩阵setClosed中，初始化为空矩阵
-setOpenCosts = [0];  %setOpenCosts 中存放拓展出来的最优值距离起始点的代价，初始化为0（因为第一个点就是起始点，起始点距离）
-setOpenHeuristics = [Inf]; %setOpenHeuristics 中存放待选的子节点距离终止点的代价
-setClosed = []; 
-setClosedCosts = [];
-movementdirections = {'R','L','D','U','LD','LU','RU','RD'};  %，movementdirections中存放着四个移动方向的代号
-
-
-
-% 这个函数用来随机生成环境，障碍物，起点，终点
-axishandle = createFigure(handles,field,costchart,startposind,goalposind);    %将随机生成的方格及障碍物的数据生成图像
-
-%%
-
-% 这个while循环是本程序的核心，利用循环进行迭代来寻找终止点
-while ~max(ismember(setOpen,goalposind)) && ~isempty(setOpen) %与; 判断终点在没在openlist中 与 openlist是否为空，当终点不在openlist中且openlist不是空的时候
-    [temp, ii] = min(setOpenCosts + setOpenHeuristics);     %寻找拓展出来的最小值；函数的返回值ii是（setOpenCosts + setOpenHeuristics）中的最小值在矩阵中的行数，返回值 temp 是 （setOpenCosts + setOpenHeuristics）中最小值
-    
-    %不同权重下不同H的算法
-    if cw==1 || fw==1 
-     [costs,heuristics,posinds] = findFValue(setOpen(ii),setOpenCosts(ii),field,goalposind,'taxicab'); 
-    else 
-     [costs,heuristics,posinds] = findFValue(setOpen(ii),setOpenCosts(ii),field,goalposind,'euclidean'); %封装函数findFValue,第533行,这个函数的作用就是把输入的点作为父节点，然后进行拓展找到子节点，并且找到子节点的代价，并且把子节点距离终点的代价找到;函数的输出量中costs表示拓展的子节点到起始点的代价，heuristics表示拓展出来的点到终止点的距离大约是多少，posinds表示拓展出来的子节点
-      % 这个函数的输入参数中setOpen(ii)表示拓展点，setOpenCosts(ii)表示当前拓展点的代价，field是之前生成的环境 信息，goalposind是终止点的索引值，euclidean 是拓展的方法（在后面会介绍）
-    end
-    
-  setClosed = [setClosed; setOpen(ii)];     % 将找出来的拓展出来的点中代价最小的那个点串到矩阵setClosed 中 
-  setClosedCosts = [setClosedCosts; setOpenCosts(ii)];    % 将拓展出来的点中代价最小的那个点的代价串到矩阵setClosedCosts 中
-  
-  % 从setOpen中删除刚才放到矩阵setClosed中的那个点
-  %如果这个点位于矩阵的内部
-  if (ii > 1 && ii < length(setOpen))
-    setOpen = [setOpen(1:ii-1); setOpen(ii+1:end)];
-    setOpenCosts = [setOpenCosts(1:ii-1); setOpenCosts(ii+1:end)];
-    setOpenHeuristics = [setOpenHeuristics(1:ii-1); setOpenHeuristics(ii+1:end)];
-    
-  %如果这个点位于矩阵第一行
-  elseif (ii == 1)
-    setOpen = setOpen(2:end);
-    setOpenCosts = setOpenCosts(2:end);
-    setOpenHeuristics = setOpenHeuristics(2:end);
-    
-  %如果这个点位于矩阵的最后一行
-  else
-    setOpen = setOpen(1:end-1);
-    setOpenCosts = setOpenCosts(1:end-1);
-    setOpenHeuristics = setOpenHeuristics(1:end-1);
-  end
-  
- %%  
-  % 把拓展出来的点中符合要求的点放到setOpen 矩阵（openlist）中，作为待选点
-  for jj=1:length(posinds)
-   
-    if ~isinf(costs(jj))   % 判断该点（方格）处没有障碍物,判断该点不是障碍物
-        
-      % 判断一下该点是否 已经存在于setOpen 矩阵或者setClosed 矩阵中
-      % 如果我们要处理的拓展点既不在setOpen 矩阵，也不在setClosed 矩阵中
-      if ~max([setClosed; setOpen] == posinds(jj))
-        fieldpointers(posinds(jj)) = movementdirections(jj);
-        costchart(posinds(jj)) = costs(jj);
-        setOpen = [setOpen; posinds(jj)];
-        setOpenCosts = [setOpenCosts; costs(jj)];
-        setOpenHeuristics = [setOpenHeuristics; heuristics(jj)];%把没在list中的点放入openlist中
-        
-      % 如果我们要处理的拓展点已经在setOpen 矩阵中
-      elseif max(setOpen == posinds(jj))
-        I = find(setOpen == posinds(jj));
-        % 如果通过目前的方法找到的这个点，比之前的方法好（代价小）就更新这个点
-        if setOpenCosts(I) > costs(jj)
-          costchart(setOpen(I)) = costs(jj);
-          setOpenCosts(I) = costs(jj);
-          setOpenHeuristics(I) = heuristics(jj);
-          fieldpointers(setOpen(I)) = movementdirections(jj);
-        end
-        % 如果我们要处理的拓展点已经在setClosed 矩阵中
-      else
-        I = find(setClosed == posinds(jj));
-        % 如果通过目前的方法找到的这个点，比之前的方法好（代价小）就更新这个点
-        if setClosedCosts(I) > costs(jj)
-          costchart(setClosed(I)) = costs(jj);
-          setClosedCosts(I) = costs(jj);
-          fieldpointers(setClosed(I)) = movementdirections(jj);
-        end
-      end
-    end
-  end
-  
- %% 
-  
-  if isempty(setOpen) 
-      break; 
-  end
-
-end
-
-%%
-
-%调用findWayBack函数进行路径回溯，并绘制出路径曲线
-if max(ismember(setOpen,goalposind))
-  disp('Solution found!');
-  p = findWayBack(goalposind,fieldpointers); % 调用findWayBack函数进行路径回溯，将回溯结果放于矩阵P中
- 
-  row = str2double(get(handles.row,'string'));
-  column = str2double(get(handles.column,'string'));
-    map=[0 0 1;   %不动1
-        1 1 1;    %2
-        1 0 1;    %3
-        1 0 0;   %不动4
-        0 0 0;   %5
-        0.46667 0.53333 0.6      %不动6
-        1 1 0;                 %7
-        0 0.74902 1    %9 
-        0.41176 0.41176 0.41176   %8
-        0 1 0];   %不动10
-    colormap(map);
-%   colormap('prism');
-  pcolor(handles.mapaxes,(1:row+1),(1:column+1),[mapmatrix mapmatrix(:,end); mapmatrix(end,:) mapmatrix(end,end)]); %绘制地图信息
-  
-  plot(p(:,2)+0.5,p(:,1)+0.5,'Color',0.2*ones(3,1),'LineWidth',4);                                           %用 plot函数绘制路径曲线
-  hold on;
-  
-  
-  %drawnow;
-  %drawnow;
-elseif isempty(setOpen)
-  errordlg('没有可行路径','错误'); 
-end
-sum1 = 0; 
-sum2 = 0;
-sum3 = 1;
-sum5 = 0;
-for i = 1:length(p)
-    sum1 = sum1 + mapdata(p(i,1),p(i,2));
-    sum2 = sum2 + mapfar(p(i,1),p(i,2));
-    sum5 = sum5 + mapspeed(p(i,1),p(i,2));
-end
-shangebianchang=str2double(get(handles.lengthofperblock,'string'));
-% nob=sum2/shangebianchang; %路径方格数
-
-for i = 1:length(p)
-    sum3 = sum3 * (1-maprisk(p(i,1),p(i,2)));
-end
-    sum4=1-sum3;
-
-
-str1 = ['路径能耗为: ' num2str(sum1)];
-str2 = ['时间为: ' num2str(sum5)];
-str3 = ['路径摔倒率为: ' num2str(sum4)];
-set(handles.textshow1,'string',str1);
-set(handles.textshow2,'string',str2);
-set(handles.textshow3,'string',str3);
-toc
-time=toc;
-set(handles.time,'string',time);
-
-%粗略分段路径
-upladderhight=str2double(get(handles.hightofupladder,'string'));     %竖梯高度
-hightofnormal=str2double(get(handles.hightofnormal,'string'));       %平台高度
-
-
-zhengxupath=flipud(p);
-numberofpathpoint=length(zhengxupath);
-filename=strcat('C:\Users\lazy\Desktop\10.29\分段路径\路径.xls');
-xlswrite(filename,zhengxupath);
-
-
-% shuangzu=[];
-% sizu=[];
-% baidang=[];
-% panpa=[];
-% tiaogao=[];
-% fanyue=[];
-% tiaoyuan=[];
-% for no=1:numberofpathpoint
-%     lastno=no-1;
-%     if mapmatrix(zhengxupath(no,1),zhengxupath(no,2))==1     %p平地双足行走
-%         shuangzu=[shuangzu;zhengxupath(no,:) mapz(zhengxupath(no,1),zhengxupath(no,2))];  
-%     elseif mapmatrix(zhengxupath(no,1),zhengxupath(no,2))==3  %斜坡四足爬行
-%         sizu=[sizu;zhengxupath(no,:) mapz(zhengxupath(lastno,1),zhengxupath(lastno,2))];
-%     elseif mapmatrix(zhengxupath(no,1),zhengxupath(no,2))==5   %云梯摆荡
-%         baidang=[baidang;zhengxupath(no,:) upladderhight];
-%     elseif mapmatrix(zhengxupath(no,1),zhengxupath(no,2))==6   %竖梯攀爬
-%         if mapmatrix(zhengxupath(lastno,1),zhengxupath(lastno,2))==5  %竖梯前一个格是云梯
-%         panpa=[panpa;zhengxupath(no,:) mapz(zhengxupath(no,1),zhengxupath(no,2))];  
-%         else   %竖梯前一个格不是云梯
-%         panpa=[panpa;zhengxupath(no,:) mapz(zhengxupath(lastno,1),zhengxupath(lastno,2))];
-%         end
-%     elseif mapmatrix(zhengxupath(no,1),zhengxupath(no,2))==7   %矮墙跳跃
-%         tiaogao=[tiaogao;zhengxupath(no,:) mapz(zhengxupath(lastno,1),zhengxupath(lastno,2))];
-%     elseif mapmatrix(zhengxupath(no,1),zhengxupath(no,2))==8    %中墙翻越
-%         fanyue=[fanyue;zhengxupath(no,:) mapz(zhengxupath(no,1),zhengxupath(no,2))];
-%     elseif mapmatrix(zhengxupath(no,1),zhengxupath(no,2))==9    %溪流跳远
-%         tiaoyuan=[tiaoyuan;zhengxupath(no,:) mapz(zhengxupath(lastno,1),zhengxupath(lastno,2))];
-%     end
-% end
-% % xlswrite('双足行走.xlsx',shuangzu);
-% % shuangzu(:,[1,2])=shuangzu(:,[2,1])
-% % sizu(:,[1,2])=sizu(:,[2,1])
-% % baidang(:,[1,2])=baidang(:,[2,1])
-% % panpa(:,[1,2])=panpa(:,[2,1])
-% % tiaogao(:,[1,2])=tiaogao(:,[2,1])
-% % fanyue(:,[1,2])=fanyue(:,[2,1])
-% % tiaoyuan(:,[1,2])=tiaoyuan(:,[2,1])
-% % shuangzu
-% % sizu
-% % baidang
-% % panpa
-% % tiaogao
-% % fanyue
-% % tiaoyuan
-% 
-% 
-% %所有路径点的种类
-% pathpointdata=[];
-% for no=1:numberofpathpoint
-%     data=mapmatrix(zhengxupath(no,1),zhengxupath(no,2));
-%     pathpointdata=[pathpointdata;data];
-% end
-% 
-% 
-% %路径段数
-% numberofsection=0;
-% noopathmione=numberofpathpoint-1;
-% for no=2:noopathmione
-%    pointdata=pathpointdata(no);
-%     if pointdata~=pathpointdata(no+1)
-%         numberofsection=numberofsection+1;
-%     end
-% end
-% numberofsection
-% 
-% 
-% 
-% %分段输出路径
-% segmentation=1;
-% pathindex=[];
-% shuzi=1;
-% CELL={};
-% Yzhou='y坐标';
-% Xzhou='x坐标';
-% kong=[];
-% for pathno=2:numberofsection
-%     for no=shuzi:numberofpathpoint-1   
-%     pointdata=pathpointdata(no);
-%     if pointdata==pathpointdata(no+1)
-%        pathindex=[pathindex ; zhengxupath(no,:); zhengxupath(no+1,:)];
-%     else
-%        pathindex=[pathindex;zhengxupath(no,:)];
-%     
-%     %去除分段路径列表中重复元素，并改为正确顺序
-%        [uniquepathindex,locationnumber]=unique(pathindex,'rows','first');
-%        res=sortrows([locationnumber,uniquepathindex]);
-%        new_pathindex=res(:,2:3)
-% %       new_pathindex(:,[1,2])=new_pathindex(:,[2,1])； %调换1，2列顺序，将（y,x）调为（x，y）
-%    
-%      if pathpointdata(no)==1
-%          kind='双足';
-%      elseif pathpointdata(no)==3
-%          kind='四足';
-%      elseif pathpointdata(no)==5
-%          kind='摆荡';
-%      elseif pathpointdata(no)==6
-%          kind='爬梯';
-%      elseif pathpointdata(no)==7
-%          kind='跳高';
-%      elseif pathpointdata(no)==8
-%          kind='翻越';
-%      elseif pathpointdata(no)==9
-%          kind='跳远';
-%      elseif pathpointdata(no)==10
-%          kind='起点';
-%      end
-%      
-%      CELL={kind,kong;Yzhou,new_pathindex(:,1);Xzhou,new_pathindex(:,2)};
-%        filename=strcat('C:\Users\lazy\Desktop\10.28\分段路径\分段路径_',num2str(segmentation),'.xls');
-%        writecell(CELL,filename);
-%        shuzi=no+1;
-%        segmentation=segmentation+1;
-%        pathindex=[];
-%        CELL={};
-%     end
-%     end
-% end
-%     %加入终点
-%     zhongdian='终点';
-%     filename=strcat('C:\Users\lazy\Desktop\10.28\分段路径\分段路径_',num2str(segmentation),'.xls');
-%     new_pathindex=[zhengxupath(end,:)]
-%     CELL={zhongdian,kong;Yzhou,new_pathindex(:,1);Xzhou,new_pathindex(:,2)};
-%     writecell(CELL,filename);
-  
-
-
-
-%% 
-
-%findWayBack函数用来进行路径回溯，这个函数的输入参数是终止点goalposind和矩阵fieldpointers，输出参数是P
-function p = findWayBack(goalposind,fieldpointers)
-
-    n = length(fieldpointers);  % 获取环境的长度也就是n
-    posind = goalposind;
-    [py,px] = ind2sub([n,n],posind); % 将索引值posind转换为坐标值 [py,px]
-    p = [py px];
-    %利用while循环进行回溯，当我们回溯到起始点的时候停止，也就是在矩阵fieldpointers中找到S时停止
-    while ~strcmp(fieldpointers{posind},'S')
-      switch fieldpointers{posind}
-        case 'L' % ’L’ 表示当前的点是由左边的点拓展出来的
-          px = px - 1;
-        case 'R' % ’R’ 表示当前的点是由右边的点拓展出来的
-          px = px + 1;
-        case 'U' % ’U’ 表示当前的点是由上面的点拓展出来的
-          py = py - 1;
-        case 'D' % ’D’ 表示当前的点是由下边的点拓展出来的
-          py = py + 1;
-        case 'RU'   %  表示当前的点是由右上边的点拓展出来的
-          py = py - 1; 
-          px = px + 1;
-        case 'RD'   %  表示当前的点是由右下边的点拓展出来的
-          py = py + 1; 
-          px = px + 1;
-        case 'LD'   %  表示当前的点是由左下边的点拓展出来的
-          py = py + 1;
-          px = px - 1;
-        case 'LU'   %  表示当前的点是由左上边的点拓展出来的
-          py = py - 1; 
-          px = px - 1;
-      end
-      p = [p; py px];
-      posind = sub2ind([n n],py,px);% 将坐标值转换为索引值
-    end
-%% 
-%这个函数的作用就是把输入的点作为父节点，然后进行拓展找到子节点，并且找到子节点的代价，并且把子节点距离终点的代价找到。
-%函数的输出量中costs表示拓展的子节点到起始点的代价，heuristics表示拓展出来的点到终止点的距离大约是多少，posinds表示拓展出来的子节点
-function [cost,heuristic,posinds] = findFValue(posind,costsofar,field,goalind,heuristicmethod)
-global sxy    
-    n = length(field);  % 获取矩阵的长度
-    [currentpos(1),currentpos(2)] = ind2sub([n n],posind);   %将要进行拓展的点（也就是父节点）的 索引值 拓展成 坐标值
-    [goalpos(1),goalpos(2)] = ind2sub([n n],goalind);        %将终止点的 索引值 拓展成 坐标值
-    [sx,sy] = ind2sub([n n],sxy); 
-    cost = Inf*ones(8,1);
-    heuristic = Inf*ones(8,1); 
-    pos = ones(8,2); %将矩阵cost和heuristic初始化为4x1的无穷大值的矩阵，pos初始化为4x2的值为1的矩阵，为什么是4x1的呢，因为我们拓展的时候采用的是向上下左右四个方向进行拓展，也就是最多可以找到四个子节点，所以代价矩阵是4x1的，为啥是4x2的呢，因为pos中存放找到的子节点的坐标值，一个子节点需要两个位置，分别存放横纵坐标
-    spsbn = abs(currentpos(2)-sy) + abs(currentpos(1)-sx);
-    pgsbn = abs(currentpos(2)-goalpos(2)) + abs(currentpos(1)-goalpos(1));
-    bn = spsbn + pgsbn ;
-
-    
-    % 拓展方向一
-    newx = currentpos(2) - 1; newy = currentpos(1); 
-    if newx > 0      % 判断拓展的点是否在区域内
-      pos(1,:) = [newy newx];
-      switch lower(heuristicmethod)
-        case 'euclidean'
-          heuristic(1) = (abs(goalpos(2)-newx) + abs(goalpos(1)-newy)) / bn;
-
-        case 'taxicab'
-          heuristic(1) = (abs(goalpos(2)-newx) + abs(goalpos(1)-newy)) ;
-
-      end
-      cost(1) = costsofar + field(newy,newx);
-
-    end
-
-    % 拓展方向二
-    newx = currentpos(2) + 1; newy = currentpos(1);
-    if newx <= n
-      pos(2,:) = [newy newx];
-      switch lower(heuristicmethod)
-        case 'euclidean'
-          heuristic(2) = (abs(goalpos(2)-newx) + abs(goalpos(1)-newy)) / bn;
-
-        case 'taxicab'
-          heuristic(2) = (abs(goalpos(2)-newx) + abs(goalpos(1)-newy)) ;
-
-      end
-      cost(2) = costsofar + field(newy,newx);
-
-    end
-
-    % 拓展方向三
-    newx = currentpos(2); newy = currentpos(1)-1;
-    if newy > 0
-      pos(3,:) = [newy newx];
-      switch lower(heuristicmethod)
-        case 'euclidean'
-          heuristic(3) = (abs(goalpos(2)-newx) + abs(goalpos(1)-newy)) / bn;
-
-        case 'taxicab'
-          heuristic(3) = (abs(goalpos(2)-newx) + abs(goalpos(1)-newy)) ;
-
-      end
-      cost(3) = costsofar + field(newy,newx);
-
-    end
-
-    % 拓展方向四
-    newx = currentpos(2); newy = currentpos(1)+1;
-    if newy <= n
-      pos(4,:) = [newy newx];
-      switch lower(heuristicmethod)
-        case 'euclidean'
-          heuristic(4) = (abs(goalpos(2)-newx) + abs(goalpos(1)-newy)) / bn;
-
-        case 'taxicab'
-          heuristic(4) = (abs(goalpos(2)-newx) + abs(goalpos(1)-newy)) ;
-
-      end
-      cost(4) = costsofar + field(newy,newx);
-    
-    end
-    
-    % 拓展方向五
-    newx = currentpos(2)+1; newy = currentpos(1)-1;
-    if newx <= n   &&  newy > 0
-      pos(5,:) = [newy newx];
-      switch lower(heuristicmethod)
-        case 'euclidean'
-          heuristic(5) = (abs(goalpos(2)-newx) + abs(goalpos(1)-newy)) / bn;
-
-        case 'taxicab'
-          heuristic(5) = (abs(goalpos(2)-newx) + abs(goalpos(1)-newy)) ;
-
-      end
-      cost(5) = costsofar + sqrt(2)*field(newy,newx);
-
-    end
-    
-    % 拓展方向六
-    newx = currentpos(2)+1; newy = currentpos(1)+1;
-    if newx <= n && newy <= n
-      pos(6,:) = [newy newx];
-      switch lower(heuristicmethod)
-        case 'euclidean'
-          heuristic(6) = (abs(goalpos(2)-newx) + abs(goalpos(1)-newy)) / bn;
-
-        case 'taxicab'
-          heuristic(6) = (abs(goalpos(2)-newx) + abs(goalpos(1)-newy)) ;
-
-      end
-      cost(6) = costsofar + sqrt(2)*field(newy,newx);
-
-    end
-    
-    % 拓展方向七
-    newx = currentpos(2)-1; newy = currentpos(1)+1;
-    if newx > 0 && newy <= n
-      pos(7,:) = [newy newx];
-      switch lower(heuristicmethod)
-        case 'euclidean'
-          heuristic(7) = (abs(goalpos(2)-newx) + abs(goalpos(1)-newy)) / bn;
-
-        case 'taxicab'
-          heuristic(7) = (abs(goalpos(2)-newx) + abs(goalpos(1)-newy)) ;
-      end
-      cost(7) = costsofar + sqrt(2)*field(newy,newx);
-
-    end
-    
-    % 拓展方向八
-    newx = currentpos(2)-1; newy = currentpos(1)-1;
-    if newx > 0 && newy > 0
-      pos(8,:) = [newy newx];
-      switch lower(heuristicmethod)
-        case 'euclidean'
-          heuristic(8) = (abs(goalpos(2)-newx) + abs(goalpos(1)-newy)) / bn;
-
-        case 'taxicab'
-          heuristic(8) = (abs(goalpos(2)-newx) + abs(goalpos(1)-newy)) ;
-
-      end
-      cost(8) = costsofar + sqrt(2)*field(newy,newx);
-
-    end
-    posinds = sub2ind([n n],pos(:,1),pos(:,2)); % 将拓展出来的子节点的 坐标值 转换为 索引值
-    
-    
-
-%% 
-%这个矩阵的作用就是随机生成环境，障碍物，起始点，终止点等
-function [field, startposind, goalposind, costchart, fieldpointers] =initializeField(n,wallpercent)
-    field = ones(n,n) + 10*rand(n,n);%生成一个n*n的单位矩阵+0到10范围内的一个随机数
-    field(ind2sub([n n],ceil(n^2.*rand(n*n*wallpercent,1)))) = Inf;%向上取整
-    % 随机生成起始点和终止点
-    startposind = sub2ind([n,n],ceil(n.*rand),ceil(n.*rand));  %随机生成起始点的索引值
-    goalposind = sub2ind([n,n],ceil(n.*rand),ceil(n.*rand));   %随机生成终止点的索引值
-    field(startposind) = 0; field(goalposind) = 0;  %把矩阵中起始点和终止点处的值设为0
-    
-    costchart = NaN*ones(n,n);%生成一个nxn的矩阵costchart，每个元素都设为NaN。就是矩阵初始NaN无效数据
-    costchart(startposind) = 0;%在矩阵costchart中将起始点位置处的值设为0
-    
-    % 生成元胞数组
-    fieldpointers = cell(n,n);%生成元胞数组n*n
-    fieldpointers{startposind} = 'S'; fieldpointers{goalposind} = 'G'; %将元胞数组的起始点的位置处设为 'S'，终止点处设为'G'
-    fieldpointers(field==inf)={0};
-
-
-%%
-%利用随机生成的环境数据来进行环境的绘制
-function axishandle = createFigure(handles,field,costchart,startposind,goalposind)
-      
-      n = length(field);  %获取矩阵的长度，并赋值给变量n
-      field(field < Inf) = 0; %将fieid矩阵中的随机数（也就是没有障碍物的位置处）设为0
-      pcolor(1:n+1,1:n+1,[field field(:,end); field(end,:) field(end,end)]);%多加了一个重复的（由n X n变为 n+1 X n+1 ）
- 
-      cmap = flipud(colormap('jet'));  %生成的cmap是一个256X3的矩阵，每一行的3个值都为0-1之间数，分别代表颜色组成的rgb值
-      cmap(1,:) = zeros(3,1); cmap(end,:) = ones(3,1); %将矩阵cmap的第一行设为0 ，最后一行设为1
-      colormap(flipud(cmap)); %进行颜色的倒转 
-      hold on;
-      axishandle = pcolor(handles.mapaxes,[1:n+1],[1:n+1],[costchart costchart(:,end); costchart(end,:) costchart(end,end)]);  %将矩阵costchart进行拓展，插值着色后赋给axishandle
-      hold on;
-      
-      [goalposy,goalposx] = ind2sub([n,n],goalposind);
-      [startposy,startposx] = ind2sub([n,n],startposind);
-       plot(goalposx+0.5,goalposy+0.5,'ys','MarkerSize',10,'LineWidth',6);
-       hold on;
-       plot(startposx+0.5,startposy+0.5,'go','MarkerSize',10,'LineWidth',6);
-       hold on;
-       
-       
-function [field, startposind, goalposind, costchart, fieldpointers] = Reset_G_S(field, startposind, goalposind, costchart, fieldpointers,New_startposind,New_goalposind)
-    global sxy gxy
-   %在initializeField函数创建环境时，将field矩阵中没有障碍物的点处设定为10，有障碍物的点处设定为inf，起始点和终止点设为0
-   %现在需要将新的起始点和终止点处设为0，原来起始点和终止点处设为10
-    field(startposind) = 10; field(goalposind) = 10;  
-    field(New_startposind) = 0; field(New_goalposind) = 0;  
-   
-    %在initializeField函数创建环境时，将costchart矩阵中的起始点设定为0，其他点设定为NAN
-    %现在需要将新的起始点设定为0，原来的起始点设定为1
-    costchart(startposind) = NaN;
-    costchart(New_startposind) =0;
-    
-    % 在initializeField函数创建环境时，将fieldpointers元胞数组中起始点的位置处设为'S'，终止点处设为'G'，有障碍物的点设为'0'，没有障碍物的点设为'1'
-    % 现在需要将新的起始点处设为'S'，新的终止点处设为'G'，原来的起始点和终止点处设为'1'
-    fieldpointers{startposind} = '1'; fieldpointers{goalposind} = '1'; 
-    fieldpointers{New_startposind} = 'S'; fieldpointers{New_goalposind} = 'G'; 
-  
-    %最后我们将新的起始点和新的终止点的索引值分别赋值给startposind和goalposind进行输出
-    startposind=New_startposind;
-    sxy=New_startposind;
-    goalposind=New_goalposind;
-    gxy=New_goalposind;
-
-
-
 function anglerisk_Callback(hObject, eventdata, handles)
 % hObject    handle to anglerisk (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -1498,363 +883,6 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
     set(hObject,'BackgroundColor','white');
 end
 
-
-% --- Executes on button press in astarpathfind.
-function astarpathfind_Callback(hObject, eventdata, handles)
-% hObject    handle to astarpathfind (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-%方格数及障碍物比例的设定
-tic
-global SandEpoint mapdata mapmatrix mapfar maprisk row column Ablocknumber mapspeed
-n = str2double(get(handles.row,'string'));   % 产生一个n x n的方格，修改此值可以修改生成图片的方格数
-wallpercent = 0;  % 这个变量代表生成的障碍物占总方格数的比例 ，如0.5 表示障碍物占总格数的50%
-Environmental_Set=1; %这个参数用来选择是否随机生成障碍物，若设定为0，则使用上一次创建的环境信息，若设定为1，则重新随机生成障碍物
-Reset_GS=1;   %这个参数用来选择是否重新设定起始点和终止点，若设定为1，开始重新设定起始点和终止点，同时需要将变量New_goalposind和New_startposind的值修改为你所选择的起始点和终止点的索引值，设为0则关闭
-
-% New_startposind=(SandEpoint(1,1)-1)*n+SandEpoint(1,2);  
-% New_goalposind=(SandEpoint(2,1)-1)*n+SandEpoint(2,2);   
-sgpoint=find(mapmatrix==10);
-New_startposind=sgpoint(1); 
-New_goalposind=sgpoint(2); 
-
-[field, startposind, goalposind, costchart, fieldpointers] =initializeField(n,wallpercent); %以上的代码封装成一个函数取名为initializeField,输出量为field, startposind, goalposind, costchart, fieldpointers；随机生成包含障碍物，起始点，终止点等信息的矩阵
-
-
-field=mapfar;
-
-
-%重新设定起始点和终止点
-if(Reset_GS==1)
-[field, startposind, goalposind, costchart, fieldpointers] = Reset_G_S(field, startposind, goalposind, costchart, fieldpointers,New_startposind,New_goalposind);
-end
-% 路径规划中用到的一些矩阵的初始化
-setOpen = [startposind];  %setOpen 矩阵是用来存放待选的子节点（也就是拓展出来的子节点）的矩阵，初始化为起始点的索引值，在这个待选的矩阵里面找到最优的值，再存放到矩阵setClosed中，初始化为空矩阵
-setOpenCosts = [0];  %setOpenCosts 中存放拓展出来的最优值距离起始点的代价，初始化为0（因为第一个点就是起始点，起始点距离）
-setOpenHeuristics = [Inf]; %setOpenHeuristics 中存放待选的子节点距离终止点的代价
-setClosed = []; 
-setClosedCosts = [];
-movementdirections = {'R','L','D','U','LD','LU','RU','RD'};  %，movementdirections中存放着四个移动方向的代号
-
-
-
-% 这个函数用来随机生成环境，障碍物，起点，终点
-axishandle = createFigure(handles,field,costchart,startposind,goalposind);    %将随机生成的方格及障碍物的数据生成图像
-
-%%
-
-% 这个while循环是本程序的核心，利用循环进行迭代来寻找终止点
-while ~max(ismember(setOpen,goalposind)) && ~isempty(setOpen) %与; 判断终点在没在openlist中 与 openlist是否为空，当终点不在openlist中且openlist不是空的时候
-    [temp, ii] = min(setOpenCosts + setOpenHeuristics);     %寻找拓展出来的最小值；函数的返回值ii是（setOpenCosts + setOpenHeuristics）中的最小值在矩阵中的行数，返回值 temp 是 （setOpenCosts + setOpenHeuristics）中最小值
-    
-    [costs,heuristics,posinds] = findFValueastar(setOpen(ii),setOpenCosts(ii),field,goalposind,'euclidean'); %封装函数findFValue,第533行,这个函数的作用就是把输入的点作为父节点，然后进行拓展找到子节点，并且找到子节点的代价，并且把子节点距离终点的代价找到;函数的输出量中costs表示拓展的子节点到起始点的代价，heuristics表示拓展出来的点到终止点的距离大约是多少，posinds表示拓展出来的子节点
-                         % 这个函数的输入参数中setOpen(ii)表示拓展点，setOpenCosts(ii)表示当前拓展点的代价，field是之前生成的环境 信息，goalposind是终止点的索引值，euclidean 是拓展的方法（在后面会介绍）
-    
-    
-  setClosed = [setClosed; setOpen(ii)];     % 将找出来的拓展出来的点中代价最小的那个点串到矩阵setClosed 中 
-  setClosedCosts = [setClosedCosts; setOpenCosts(ii)];    % 将拓展出来的点中代价最小的那个点的代价串到矩阵setClosedCosts 中
-  
-  % 从setOpen中删除刚才放到矩阵setClosed中的那个点
-  %如果这个点位于矩阵的内部
-  if (ii > 1 && ii < length(setOpen))
-    setOpen = [setOpen(1:ii-1); setOpen(ii+1:end)];
-    setOpenCosts = [setOpenCosts(1:ii-1); setOpenCosts(ii+1:end)];
-    setOpenHeuristics = [setOpenHeuristics(1:ii-1); setOpenHeuristics(ii+1:end)];
-    
-  %如果这个点位于矩阵第一行
-  elseif (ii == 1)
-    setOpen = setOpen(2:end);
-    setOpenCosts = setOpenCosts(2:end);
-    setOpenHeuristics = setOpenHeuristics(2:end);
-    
-  %如果这个点位于矩阵的最后一行
-  else
-    setOpen = setOpen(1:end-1);
-    setOpenCosts = setOpenCosts(1:end-1);
-    setOpenHeuristics = setOpenHeuristics(1:end-1);
-  end
-  
- %%  
-  % 把拓展出来的点中符合要求的点放到setOpen 矩阵（openlist）中，作为待选点
-  for jj=1:length(posinds)
-   
-    if ~isinf(costs(jj))   % 判断该点（方格）处没有障碍物,判断该点不是障碍物
-        
-      % 判断一下该点是否 已经存在于setOpen 矩阵或者setClosed 矩阵中
-      % 如果我们要处理的拓展点既不在setOpen 矩阵，也不在setClosed 矩阵中
-      if ~max([setClosed; setOpen] == posinds(jj))
-        fieldpointers(posinds(jj)) = movementdirections(jj);
-        costchart(posinds(jj)) = costs(jj);
-        setOpen = [setOpen; posinds(jj)];
-        setOpenCosts = [setOpenCosts; costs(jj)];
-        setOpenHeuristics = [setOpenHeuristics; heuristics(jj)];%把没在list中的点放入openlist中
-        
-      % 如果我们要处理的拓展点已经在setOpen 矩阵中
-      elseif max(setOpen == posinds(jj))
-        I = find(setOpen == posinds(jj));
-        % 如果通过目前的方法找到的这个点，比之前的方法好（代价小）就更新这个点
-        if setOpenCosts(I) > costs(jj)
-          costchart(setOpen(I)) = costs(jj);
-          setOpenCosts(I) = costs(jj);
-          setOpenHeuristics(I) = heuristics(jj);
-          fieldpointers(setOpen(I)) = movementdirections(jj);
-        end
-        % 如果我们要处理的拓展点已经在setClosed 矩阵中
-      else
-        I = find(setClosed == posinds(jj));
-        % 如果通过目前的方法找到的这个点，比之前的方法好（代价小）就更新这个点
-        if setClosedCosts(I) > costs(jj)
-          costchart(setClosed(I)) = costs(jj);
-          setClosedCosts(I) = costs(jj);
-          fieldpointers(setClosed(I)) = movementdirections(jj);
-        end
-      end
-    end
-  end
-  
- %% 
-  
-  if isempty(setOpen) 
-      break; 
-  end
-%   set(axishandle,'CData',[costchart costchart(:,end); costchart(end,:) costchart(end,end)]);
-%   set(gca,'CLim',[0 1.1*max(costchart(find(costchart < Inf)))]);
-%   drawnow; 
-end
-
-%%
-
-%调用findWayBack函数进行路径回溯，并绘制出路径曲线
-if max(ismember(setOpen,goalposind))
-  disp('Solution found!');
-  p = findWayBack(goalposind,fieldpointers); % 调用findWayBack函数进行路径回溯，将回溯结果放于矩阵P中
-
-  row = str2double(get(handles.row,'string'));
-  column = str2double(get(handles.column,'string'));
-    map=[0 0 1;   %不动1
-        1 1 1;    %2
-        1 0 1;    %3
-        1 0 0;   %不动4
-        0 0 0;   %5
-        0.46667 0.53333 0.6      %不动6
-        1 1 0;                 %7
-        0 0.74902 1    %9 
-        0.41176 0.41176 0.41176   %8
-        0 1 0];   %不动10
-    colormap(map);
-%   colormap('prism');
-  pcolor(handles.mapaxes,(1:row+1),(1:column+1),[mapmatrix mapmatrix(:,end); mapmatrix(end,:) mapmatrix(end,end)]); %绘制地图信息
-  
-  plot(p(:,2)+0.5,p(:,1)+0.5,'Color',0.2*ones(3,1),'LineWidth',4);                                           %用 plot函数绘制路径曲线
-  hold on;
-  
-  
-  %drawnow;
-  %drawnow;
-elseif isempty(setOpen)
-  errordlg('没有可行路径','错误'); 
-end
-sum1 = 0; 
-sum2 = 0;
-sum3 = 1;
-sum5 = 0;
-for i = 1:length(p)
-    sum1 = sum1 + mapdata(p(i,1),p(i,2));
-    sum2 = sum2 + mapfar(p(i,1),p(i,2));
-
-    sum5 = sum5 + mapspeed(p(i,1),p(i,2));
-end
-shangebianchang=str2double(get(handles.lengthofperblock,'string'));
-
-
-for i = 1:length(p)
-    sum3 = sum3 * (1-maprisk(p(i,1),p(i,2)));
-end
-    sum4=1-sum3;
-
-
-str1 = ['路径能耗为: ' num2str(sum1)];
-str2 = ['时间为: ' num2str(sum5)];
-str3 = ['路径摔倒率为: ' num2str(sum4)];
-set(handles.textshow1,'string',str1);
-set(handles.textshow2,'string',str2);
-set(handles.textshow3,'string',str3);
-Ablocknumber = sum2;
-toc
-time=toc;
-set(handles.time,'string',time);
-
-
-
-function [cost,heuristic,posinds] = findFValueastar(posind,costsofar,field,goalind,heuristicmethod)
-    n = length(field);  % 获取矩阵的长度
-    [currentpos(1),currentpos(2)] = ind2sub([n n],posind);   %将要进行拓展的点（也就是父节点）的 索引值 拓展成 坐标值
-    [goalpos(1),goalpos(2)] = ind2sub([n n],goalind);        %将终止点的 索引值 拓展成 坐标值
-    cost = Inf*ones(8,1);
-    heuristic = Inf*ones(8,1); 
-    pos = ones(8,2); %将矩阵cost和heuristic初始化为4x1的无穷大值的矩阵，pos初始化为4x2的值为1的矩阵，为什么是4x1的呢，因为我们拓展的时候采用的是向上下左右四个方向进行拓展，也就是最多可以找到四个子节点，所以代价矩阵是4x1的，为啥是4x2的呢，因为pos中存放找到的子节点的坐标值，一个子节点需要两个位置，分别存放横纵坐标
-
-    % 拓展方向一
-    newx = currentpos(2) - 1; newy = currentpos(1); 
-    if newx > 0      % 判断拓展的点是否在区域内
-      pos(1,:) = [newy newx];
-      switch lower(heuristicmethod)
-        case 'euclidean'
-          heuristic(1) = abs(goalpos(2)-newx) + abs(goalpos(1)-newy) ;
-
-        case 'taxicab'
-          heuristic(1) = abs(goalpos(2)-newx) + abs(goalpos(1)-newy) ;
-
-      end
-      cost(1) = costsofar + field(newy,newx);
-
-    end
-
-    % 拓展方向二
-    newx = currentpos(2) + 1; newy = currentpos(1);
-    if newx <= n
-      pos(2,:) = [newy newx];
-      switch lower(heuristicmethod)
-        case 'euclidean'
-          heuristic(2) = abs(goalpos(2)-newx) + abs(goalpos(1)-newy);
-
-        case 'taxicab'
-          heuristic(2) = abs(goalpos(2)-newx) + abs(goalpos(1)-newy);
-
-      end
-      cost(2) = costsofar + field(newy,newx);
-
-    end
-
-    % 拓展方向三
-    newx = currentpos(2); newy = currentpos(1)-1;
-    if newy > 0
-      pos(3,:) = [newy newx];
-      switch lower(heuristicmethod)
-        case 'euclidean'
-          heuristic(3) = abs(goalpos(2)-newx) + abs(goalpos(1)-newy);
-
-        case 'taxicab'
-          heuristic(3) = abs(goalpos(2)-newx) + abs(goalpos(1)-newy);
-
-      end
-      cost(3) = costsofar + field(newy,newx);
-
-    end
-
-    % 拓展方向四
-    newx = currentpos(2); newy = currentpos(1)+1;
-    if newy <= n
-      pos(4,:) = [newy newx];
-      switch lower(heuristicmethod)
-        case 'euclidean'
-          heuristic(4) = abs(goalpos(2)-newx) + abs(goalpos(1)-newy);
-
-        case 'taxicab'
-          heuristic(4) = abs(goalpos(2)-newx) + abs(goalpos(1)-newy);
-
-      end
-      cost(4) = costsofar + field(newy,newx);
-    end
-    % 拓展方向五
-    newx = currentpos(2)+1; newy = currentpos(1)-1;
-    if newx <= n   &&  newy > 0
-      pos(5,:) = [newy newx];
-      switch lower(heuristicmethod)
-        case 'euclidean'
-          heuristic(5) = (abs(goalpos(2)-newx) + abs(goalpos(1)-newy)) ;
-
-        case 'taxicab'
-          heuristic(5) = (abs(goalpos(2)-newx) + abs(goalpos(1)-newy)) ;
-
-      end
-      cost(5) = costsofar + sqrt(2)*field(newy,newx);
-
-    end
-    
-    % 拓展方向六
-    newx = currentpos(2)+1; newy = currentpos(1)+1;
-    if newx <= n && newy <= n
-      pos(6,:) = [newy newx];
-      switch lower(heuristicmethod)
-        case 'euclidean'
-          heuristic(6) = (abs(goalpos(2)-newx) + abs(goalpos(1)-newy)) ;
-
-        case 'taxicab'
-          heuristic(6) = (abs(goalpos(2)-newx) + abs(goalpos(1)-newy)) ;
-
-      end
-      cost(6) = costsofar + sqrt(2)*field(newy,newx);
-
-    end
-    
-    % 拓展方向七
-    newx = currentpos(2)-1; newy = currentpos(1)+1;
-    if newx > 0 && newy <= n
-      pos(7,:) = [newy newx];
-      switch lower(heuristicmethod)
-        case 'euclidean'
-          heuristic(7) = (abs(goalpos(2)-newx) + abs(goalpos(1)-newy)) ;
-
-        case 'taxicab'
-          heuristic(7) = (abs(goalpos(2)-newx) + abs(goalpos(1)-newy)) ;
-      end
-      cost(7) = costsofar + sqrt(2)*field(newy,newx);
-
-    end
-    
-    % 拓展方向八
-    newx = currentpos(2)-1; newy = currentpos(1)-1;
-    if newx > 0 && newy > 0
-      pos(8,:) = [newy newx];
-      switch lower(heuristicmethod)
-        case 'euclidean'
-          heuristic(8) = (abs(goalpos(2)-newx) + abs(goalpos(1)-newy)) ;
-
-        case 'taxicab'
-          heuristic(8) = (abs(goalpos(2)-newx) + abs(goalpos(1)-newy)) ;
-
-      end
-      cost(8) = costsofar + sqrt(2)*field(newy,newx);
-    end
-     posinds = sub2ind([n n],pos(:,1),pos(:,2)); % 将拓展出来的子节点的 坐标值 转换为 索引值
-
-
-% --- Executes on button press in ALLpathsfind.
-function ALLpathsfind_Callback(hObject, eventdata, handles)
-% hObject    handle to ALLpathsfind (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-tic
-global   maze mapdata mapspeed maprisk 
-G = maze;
-D = mapdata;
-F = mapspeed;
-R = maprisk;
-A = str2double(get(handles.row,'string'));
-
-shangebianchang=str2double(get(handles.lengthofperblock,'string'));
-normalspeed=str2double(get(handles.normalspeed,'string'));
-topnb=shangebianchang/normalspeed;    %每个平地方格消耗时间
-secost=str2double(get(handles.normalcost,'string'));
-serisk=str2double(get(handles.normalrisk,'string'));
-sespeed=topnb;
-
-% DFS_Maze(maze,mapdata,mapfar,maprisk,secost,serisk,selength,Ablocknumber);
-DFS_Maze(G,D,F,R,secost,serisk,sespeed,A);
-toc
-time=toc;
-
-set(handles.time,'string',time);
-
-str1 = [ ];
-str2 = [ ];
-str3 = [ ];
-set(handles.textshow1,'string',str1);
-set(handles.textshow2,'string',str2);
-set(handles.textshow3,'string',str3);
-
-
 % --- Executes on button press in pushbutton12.
 function pushbutton12_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton12 (see GCBO)
@@ -1868,7 +896,6 @@ save('maprisk.mat','maprisk');
 save('maze.mat','maze');
 save('mapspeed.mat','mapspeed');
 save('mapG.mat','mapG');
-
 
 
 % --- Executes on button press in pushbutton13.
@@ -2126,9 +1153,6 @@ if startflag
     phandles = pcolor(1:row+1,1:column+1,[mapmatrix mapmatrix(:,end); mapmatrix(end,:) mapmatrix(end,end)]);
     set(phandles,'ButtonDownFcn',{@mapClickCallback,handles}); 
 end
-
-
- 
 
 
 % --- Executes during object creation, after setting all properties.
@@ -2681,7 +1705,7 @@ function GApathfinding_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 tic
-global  mapG  mapmatrix mapspeed mapdata maprisk 
+global  mapG  mapmatrix mapspeed mapdata maprisk  x_goal y_goal inflection in_point_num n
 
 %GA与gui索引起点不同排列不同，所以将索引对齐，将点击地图的索引转化为GA地图中的索引
 n = str2double(get(handles.row,'string'));
@@ -2712,7 +1736,7 @@ itertaion_limit=str2double(get(handles.iteration_limit,'string'));
 
 %调用GA
 % GApathfinding(R,D,S,M,G,start,goal,n,gatime,gasmooth,gacost,garisk);
-[finaldata]=MLRMOEGApathfinding(R,D,S,M,G,start,goal,n,gatime,gasmooth,gacost,garisk,runtimes,initial_population_size,itertaion_limit);
+[finaldata,min_path]=MLRMOEGApathfinding(R,D,S,M,G,start,goal,n,gatime,gasmooth,gacost,garisk,runtimes,initial_population_size,itertaion_limit);
 
 sum5=finaldata(1);
 sum1=finaldata(3);
@@ -2732,6 +1756,20 @@ set(handles.textshow12,'string',str4);
 toc
 time=toc;
 set(handles.time,'string',time);
+
+%找出路线拐点
+[inflection] = find_inflection(min_path,n);
+[in_point_num,~]=size(inflection);
+
+%计算终点x，y左边加入到拐点队列
+x_goal = mod(goal, n) + 1;
+y_goal = fix(goal / n) + 1;
+
+inflection(in_point_num+1,1)=x_goal;
+inflection(in_point_num+1,2)=y_goal;
+inflection
+
+
 
 
 
@@ -2896,12 +1934,307 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
 end
 
 
-% --- Executes on button press in pushbutton17.
-function pushbutton17_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton17 (see GCBO)
+% --- Executes on button press in MapAnalysis.
+function MapAnalysis_Callback(hObject, eventdata, handles)
+% hObject    handle to MapAnalysis (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 global mapmatrix
 M=mapmatrix;
 [~,x]=size(M);
 [all_area] = Map_analysis(M,x)
+
+
+% --- Executes on button press in DWAbutton.
+function DWAbutton_Callback(hObject, eventdata, handles)
+% hObject    handle to DWAbutton (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+global x_goal y_goal inflection in_point_num n mapdata ob_list obstacle
+R=mapdata';
+ob=find(R==inf)
+[ob_num,~]=size(ob);
+ob_list=[];
+for i=1:ob_num
+    x_ob = mod((ob(i)-1), n)  + 1;
+    y_ob = fix((ob(i)-1) / n) + 1;
+    ob_list(i,1)=x_ob;
+    ob_list(i,2)=y_ob;
+end
+ob_list=ob_list+ones(ob_num,2)*0.5;
+% dwa_main(x_goal,y_goal,inflection,in_point_num,n,ob_list);
+
+
+%%DWA算法实现
+disp('Dynamic Window Approach sample program start!!')
+%% 机器人的初期状态[x(m),y(m),yaw(Rad),v(m/s),w(rad/s)]
+
+start_Rate=(inflection(1,2)-1)/(inflection(1,1)-1);
+start_angle=atan(start_Rate);
+
+% x=[0 0 pi/2 0 0]'; % 5x1矩阵 列矩阵  位置 0，0 航向 pi/2 ,速度、角速度均为0
+%x = [1.5 1.5 pi/2 0 0]'; 
+x = [1.5 1.5 start_angle 0 0]'; 
+
+% 下标宏定义 状态[x(m),y(m),yaw(Rad),v(m/s),w(rad/s)]
+POSE_X      = 1;  %坐标 X
+POSE_Y      = 2;  %坐标 Y
+YAW_ANGLE   = 3;  %机器人航向角
+V_SPD       = 4;  %机器人速度
+W_ANGLE_SPD = 5;  %机器人角速度 
+
+goal = [x_goal,y_goal];   % 目标点位置 [x(m),y(m)]
+
+% 障碍物位置列表 [x(m) y(m)]
+% obstacle=[%0 2;
+%           3 20*rand(1);
+% %           4 4;
+% %          5 4;
+% %            5 5;
+%           6 20*rand(1);
+% %          5 9
+% %          7 8
+%           8 20*rand(1);
+%           2 5;      
+%           4 2;
+%           7 7;
+%           9 9
+%             ];
+obstacle=ob_list;
+[ob_num,~]=size(ob_list);
+%边界障碍物，防止跑出图外
+ for i =-1
+    for j = -1:n+3
+        obstacle = [obstacle; [i,j]];
+    end
+ end     
+for i =n+3
+    for j = -1:n+3
+        obstacle = [obstacle; [i,j]];
+    end
+end 
+for j =-1
+    for i = -1:n+3
+        obstacle = [obstacle; [i,j]];
+    end
+end 
+for j=n+3
+    for i= -1:n+3
+        obstacle = [obstacle; [i,j]];
+    end
+end 
+
+%动态障碍物位置
+% obstacle = [obstacle; [13,15]];
+% obstacle = [obstacle; [9,12]];
+% obstacle = [obstacle; [20,9]];
+
+[ob_num,~]=size(obstacle);
+obstacleR = 0.5;% 冲突判定用的障碍物半径
+global dt; 
+dt = 0.1;% 时间[s]
+
+% 机器人运动学模型参数
+% 最高速度m/s],最高旋转速度[rad/s],加速度[m/ss],旋转加速度[rad/ss],
+% 速度分辨率[m/s],转速分辨率[rad/s]]
+Kinematic = [0.7,pi,0.2,toRadian(50.0),0.01,toRadian(1)];
+%定义Kinematic的下标含义
+MD_MAX_V    = 0.7;%   最高速度m/s]
+MD_MAX_W    = pi;%   最高旋转速度[rad/s]
+MD_ACC      = 3;%   加速度[m/ss]
+MD_VW       = 4;%   旋转加速度[rad/ss]
+MD_V_RESOLUTION  = 5;%  速度分辨率[m/s]
+MD_W_RESOLUTION  = 6;%  转速分辨率[rad/s]]
+
+
+% 评价函数参数 [heading,dist,velocity,predictDT]
+% 航向得分的比重、距离得分的比重、速度得分的比重、向前模拟轨迹的时间
+evalParam = [0.05, 0.05 ,0.1, 3.0];
+% evalParam = [2, 0.2 ,0.2, 3.0];
+
+%画出的区域范围
+area  = [1 n+1 1 n+1];% 模拟区域范围 [xmin xmax ymin ymax]
+% area  = [-1 n+3 -1 n+3];
+
+
+
+% 模拟实验的结果
+result.x=[];   %累积存储走过的轨迹点的状态值
+tic; % 估算程序运行时间开始
+flag_obstacle = [1-2*rand(1) 1-2*rand(1) 1-2*rand(1)];
+% flag_obstacle = [1 1 1];
+vel_obstacle = 0.05;
+temp = 0;
+abc = 0;
+%movcount=0;
+goal_list=inflection+ones(in_point_num+1, 2)*0.5;
+
+in_point_num=in_point_num+1;
+
+for goal_num=1:in_point_num
+    goal=goal_list(goal_num,:);
+    %% Main loop   循环运行 5000次 指导达到目的地 或者 5000次运行结束
+    for i = 1:5000  
+        % DWA参数输入 返回控制量 u = [v(m/s),w(rad/s)] 和 轨迹
+        [u,traj] = DynamicWindowApproach(x,Kinematic,goal,evalParam,obstacle,obstacleR,goal_num,in_point_num);%算出下发速度u/当前速度u
+        u
+%         pub_vel(u(1),u(2));
+        x = f(x,u);% 机器人移动到下一个时刻的状态量 根据当前速度和角速度推导 下一刻的位置和角度
+        abc = abc+1;
+        % 历史轨迹的保存
+        result.x = [result.x; x'];  %最新结果 以行的形式 添加到result.x，保存的是所有状态参数值，包括坐标xy、朝向、线速度、角速度，其实应该是只取坐标就OK
+        
+        
+        % 是否到达目的地        
+        if goal_num<in_point_num
+            arrival_dis=0.5;
+        else
+            arrival_dis=0.15;
+        end
+
+        
+        if norm(x(POSE_X:POSE_Y)-goal')<arrival_dis   % norm函数来求得坐标上的两个点之间的距离
+            disp('==========Arrive Goal!!==========');
+            break;
+        end
+        
+        
+        %====Animation====
+        hold off;               % 关闭图形保持功能。 新图出现时，取消原图的显示。
+        ArrowLength = 0.5;      % 箭头长度
+
+        % 机器人
+        % quiver(x,y,u,v) 在 x 和 y 中每个对应元素对组所指定的坐标处将向量绘制为箭头
+        quiver(x(POSE_X), x(POSE_Y), ArrowLength*cos(x(YAW_ANGLE)), ArrowLength*sin(x(YAW_ANGLE)),'ok'); 
+        % 绘制机器人当前位置的航向箭头
+        hold on;                                                     
+        %启动图形保持功能，当前坐标轴和图形都将保持，从此绘制的图形都将添加在这个图形的基础上，并自动调整坐标轴的范围
+
+        plot(result.x(:,POSE_X),result.x(:,POSE_Y),'-b');hold on;    % 绘制走过的所有位置 所有历史数据的 X、Y坐标
+        plot(goal(1),goal(2),'*r');hold on;                          % 绘制目标位置
+
+%%动态障碍物
+%         for j = 1:3
+%                 if obstacle(j,2) > 10 && flag_obstacle(j) > 0 || obstacle(j,2) < 0 && flag_obstacle(j) < 0
+%                     obstacle(j) = flag_obstacle(j);
+%                 end
+%                 obstacle(j,2)=obstacle(j,2)+flag_obstacle(j)*vel_obstacle;
+%         end
+        
+        plot(obstacle(:,1),obstacle(:,2),'.w');
+        hold on;              % 绘制所有障碍物位置
+        DrawObstacle_plot(obstacle,obstacleR);
+
+
+        % 探索轨迹 画出待评价的轨迹
+        if ~isempty(traj) %轨迹非空
+            for it=1:length(traj(:,1))/5    %计算所有轨迹数  traj 每5行数据 表示一条轨迹点
+                ind = 1+(it-1)*5; %第 it 条轨迹对应在traj中的下标 
+                plot(traj(ind,:),traj(ind+1,:),'-g');hold on;  %根据一条轨迹的点串画出轨迹   traj(ind,:) 表示第ind条轨迹的所有x坐标值  traj(ind+1,:)表示第ind条轨迹的所有y坐标值
+            end
+        end
+
+        axis(area); %根据area设置当前图形的坐标范围，分别为x轴的最小、最大值，y轴的最小最大值
+        grid on;
+        
+        drawnow limitrate;  %刷新屏幕. 当代码执行时间长，需要反复执行plot时，Matlab程序不会马上把图像画到figure上，这时，要想实时看到图像的每一步变化情况，需要使用这个语句。
+        for j = 1:3
+            if norm(obstacle(j,:)-x(1:2)')-obstacleR < 0
+               disp('==========Hit an obstacle!!==========');
+               temp = 1;
+               break;
+            end
+        end
+    %     if temp == 1
+    %         break;
+    %     end
+       % movcount = movcount+1;
+       % mov(movcount) = getframe(gcf);%  记录动画帧
+    end
+    toc;  %输出程序运行时间  形式：时间已过 ** 秒。
+    disp(abc)
+    %movie2avi(mov,'movie.avi');  %录制过程动画 保存为 movie.avi 文件
+end
+
+
+% --- Executes on button press in updataob.
+function updataob_Callback(hObject, eventdata, handles)
+% hObject    handle to updataob (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+global  obstacle
+new_ob_x=str2double(get(handles.new_ob_x,'string'));
+new_ob_y=str2double(get(handles.new_ob_y,'string'));
+obstacle=[obstacle;[new_ob_x,new_ob_y]];
+
+
+
+
+
+
+function new_ob_x_Callback(hObject, eventdata, handles)
+% hObject    handle to new_ob_x (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of new_ob_x as text
+%        str2double(get(hObject,'String')) returns contents of new_ob_x as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function new_ob_x_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to new_ob_x (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function new_ob_y_Callback(hObject, eventdata, handles)
+% hObject    handle to new_ob_y (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of new_ob_y as text
+%        str2double(get(hObject,'String')) returns contents of new_ob_y as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function new_ob_y_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to new_ob_y (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function newR_Callback(hObject, eventdata, handles)
+% hObject    handle to newR (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of newR as text
+%        str2double(get(hObject,'String')) returns contents of newR as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function newR_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to newR (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
